@@ -133,6 +133,7 @@ p{max-width:62ch; margin:0 0 1.1em}
   font-variation-settings:"wdth" 100,"wght" 500; white-space:nowrap;
 }
 .nav-links a:hover, .nav-trigger:hover, .nav-links a.active{color:var(--clay)}
+.nav.over-hero .nav-links a.active{color:var(--paper); border-bottom:1px solid var(--clay)}
 .drop{
   position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(6px);
   background:var(--paper); border:1px solid var(--ink-14); border-radius:4px;
@@ -176,7 +177,10 @@ p{max-width:62ch; margin:0 0 1.1em}
 
 /* ---------- hero ---------- */
 .hero{position:relative; min-height:100svh; display:flex; align-items:flex-end; color:var(--paper); background:var(--terre); overflow:hidden}
-.hero-media{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.hero-media{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:sepia(.18) saturate(1.04) contrast(1.04) brightness(.98)}
+.hero-grade{position:absolute; inset:0; background:var(--clay); mix-blend-mode:soft-light; opacity:.40; pointer-events:none}
+.hero-grade-2{position:absolute; inset:0; background:linear-gradient(200deg, rgba(62,46,34,.42), rgba(194,91,52,.14) 55%, rgba(62,46,34,.50)); mix-blend-mode:multiply; pointer-events:none}
 .hero-scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,30,20,.55) 0%, rgba(42,30,20,.12) 40%, rgba(42,30,20,.78) 100%)}
 .hero-in{position:relative; width:100%; max-width:var(--maxw); margin-inline:auto; padding:0 var(--gut) clamp(38px,7vh,84px)}
 .hero-foot{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:26px; margin-top:clamp(26px,5vh,52px)}
@@ -355,15 +359,14 @@ p{max-width:62ch; margin:0 0 1.1em}
      ================================================================ -->
 <div class="view on" id="v-accueil">
 
-  <!-- HERO
-       Remplacer le bloc .slot par la vidéo :
-       <video class="hero-media" autoplay muted loop playsinline poster="images/hero.jpg">
-         <source src="images/hero.mp4" type="video/mp4">
-       </video>
-       Plan attendu : un athlète seul qui marche vers un sommet, montagne sèche et minérale,
-       lumière méditerranéenne, cadence lente et cinématographique. Pas de course. -->
+  <!-- HERO — pour changer la vidéo, remplace simplement le fichier hero.mp4 (et hero-poster.jpg).
+       ATTENTION : hero.mp4 est actuellement la version d'aperçu iStock, filigranée. Elle ne peut pas rester en ligne. -->
   <section class="hero">
-    <div class="slot slot-dark"><p class="slot-note"><b>Vidéo plein écran</b>Ascension, montagne aride, lumière chaude</p></div>
+    <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-grade"></div>
+    <div class="hero-grade-2"></div>
     <div class="hero-scrim"></div>
     <div class="hero-in">
       <span class="label" style="color:var(--cream-70)">Good Pace — Athlete Management</span>
